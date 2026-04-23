@@ -25,6 +25,7 @@ class Article extends Model
         'title',
         'content',
         'status',
+        'user_id',
         'category_id'
         ];
 
@@ -36,6 +37,12 @@ class Article extends Model
                 $article->published_at = now();
             }
         });
+    }
+
+    public function getReadingTimeAttribute()
+    {
+        $words = str_word_count(strip_tags($this->content));
+        return max(1, ceil($words / 200));
     }
 
     

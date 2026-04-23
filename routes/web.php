@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PublicBlogController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\DashboardController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -12,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/', [ArticleController::class, 'index'])->name('articles.index');
+Route::get('/', [PublicBlogController::class, 'index'])->name('home');
+
+Route::get('/article/{article}', [PublicBlogController::class, 'show'])
+    ->name('article.show');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -21,9 +25,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard');
+
+    Route::resource('articles', ArticleController::class)
+        ->except(['show']);
 });
 
 
