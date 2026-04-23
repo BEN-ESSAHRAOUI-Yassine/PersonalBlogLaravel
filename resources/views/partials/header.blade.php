@@ -2,7 +2,7 @@
     <div class="container nav-wrapper">
 
         <a href="{{ route('home') }}" class="logo">
-            DevBlog
+            PersonalDevBlog
         </a>
 
         <nav>
