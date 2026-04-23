@@ -1,17 +1,62 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+@section('content')
+
+<div class="flex justify-between mb-6">
+    <h1 class="text-3xl font-bold">
+        Dashboard
+    </h1>
+
+    <a href="{{ route('articles.create') }}"
+       class="bg-blue-600 text-white px-4 py-2 rounded">
+        New Article
+    </a>
+</div>
+
+@foreach($articles as $article)
+
+<div class="bg-white p-4 rounded shadow mb-4">
+
+<div class="flex justify-between">
+
+<div>
+<h2 class="font-bold text-xl">
+{{ $article->title }}
+</h2>
+
+<p class="text-sm text-gray-500">
+{{ $article->category->name }}
+• {{ $article->status }}
+</p>
+</div>
+
+<div class="space-x-2">
+
+<a href="{{ route('articles.edit', $article) }}"
+   class="text-blue-600">
+   Edit
+</a>
+
+<form method="POST"
+      action="{{ route('articles.destroy', $article) }}"
+      class="inline"
+      onsubmit="return confirm('Delete article?')">
+
+    @csrf
+    @method('DELETE')
+
+    <button class="text-red-600">
+        Delete
+    </button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+@endforeach
+
+@endsection
