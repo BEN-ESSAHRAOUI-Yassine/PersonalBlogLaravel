@@ -26,7 +26,7 @@
     </form>
 
     <div class="demo-box">
-        blogger@mail.com / password
+        admin@test.com / password
     </div>
 
 </div>

@@ -2,58 +2,48 @@
 
 @section('content')
 
-<div class="flex justify-between mb-6">
-    <h1 class="text-3xl font-bold">
-        Dashboard
-    </h1>
-
-    <a href="{{ route('articles.create') }}"
-       class="bg-blue-600 text-white px-4 py-2 rounded">
-        New Article
-    </a>
+<div class="hero" style="padding-top:30px">
+<h1>Your Articles</h1>
+<p>Manage drafts and published posts.</p>
 </div>
+
+<a href="{{ route('articles.create') }}"
+class="btn">
++ New Article
+</a>
+
+<br><br>
 
 @foreach($articles as $article)
 
-<div class="bg-white p-4 rounded shadow mb-4">
+<div class="card">
 
-<div class="flex justify-between">
+<h2>{{ $article->title }}</h2>
 
-<div>
-<h2 class="font-bold text-xl">
-{{ $article->title }}
-</h2>
-
-<p class="text-sm text-gray-500">
+<p class="meta">
 {{ $article->category->name }}
-• {{ $article->status }}
+• {{ ucfirst($article->status) }}
 </p>
-</div>
 
-<div class="space-x-2">
-
-<a href="{{ route('articles.edit', $article) }}"
-   class="text-blue-600">
-   Edit
+<a href="{{ route('articles.edit',$article) }}">
+Edit
 </a>
 
+|
+
 <form method="POST"
-      action="{{ route('articles.destroy', $article) }}"
-      class="inline"
-      onsubmit="return confirm('Delete article?')">
+action="{{ route('articles.destroy',$article) }}"
+style="display:inline"
+onsubmit="return confirm('Delete article?')">
 
-    @csrf
-    @method('DELETE')
+@csrf
+@method('DELETE')
 
-    <button class="text-red-600">
-        Delete
-    </button>
+<button style="color:red">
+Delete
+</button>
 
 </form>
-
-</div>
-
-</div>
 
 </div>
 
