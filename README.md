@@ -1,58 +1,271 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Personal Blog CMS
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Overview
 
-## About Laravel
+Personal Blog CMS is a web-based blogging platform developed using **Laravel 13**.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The application allows a freelance blogger to manage technical articles, publish content online, and create a professional digital presence.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Visitors can browse published articles without creating an account, while the authenticated blogger can manage all content through a private dashboard.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+The system follows Laravel MVC architecture and uses Eloquent ORM, Blade templating, named routes, middleware protection, and migrations for a clean and scalable codebase.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🚀 Features
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🌍 Public Blog
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### Visitors can:
 
-## Agentic Development
+* Browse all published articles
+* View article details
+* Filter articles by category
+* Search articles by title
+* View estimated reading time
+* Paginated article listing
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
+
+## 🔐 Authentication
+
+### Blogger can:
+
+* Login securely
+* Logout securely
+
+> Registration is disabled.
+> Blogger account is created via Seeder.
+
+---
+
+## 📝 Dashboard (Authenticated Blogger)
+
+### Blogger can:
+
+* View all articles (draft + published)
+* Create new article
+* Edit existing article
+* Delete article
+* Change status:
+
+  * Draft
+  * Published
+
+---
+
+## 🎁 Bonus Features
+
+* Pagination (6 per page)
+* Search bar
+* Reading time counter
+
+---
+
+## Installation
+
+## Prerequisites
+
+* PHP 8.2+
+* Composer
+* Node.js + NPM
+* MySQL
+* Laravel CLI (optional)
+* XAMPP / Laragon / WAMP
+
+---
+
+## Steps
+
+### 1. Clone project
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/BEN-ESSAHRAOUI-Yassine/PersonalBlogLaravel
+cd PersonalBlogLaravel
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 2. Install dependencies
 
-## Contributing
+```bash
+composer install
+npm install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Environment file
 
-## Code of Conduct
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 4. Configure database
 
-## Security Vulnerabilities
+Edit `.env`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=blog_db
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## License
+### 5. Run migrations + seeders
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+php artisan migrate:fresh --seed
+```
+
+### 6. Compile assets
+
+```bash
+npm run build
+```
+
+### 7. Start server
+
+```bash
+php artisan serve
+```
+
+Visit:
+
+```text
+http://127.0.0.1:8000
+```
+
+---
+
+## Technologies Used
+
+* Laravel 13
+* PHP 8+
+* MySQL
+* Blade
+* Eloquent ORM
+* Laravel Breeze
+* Tailwind CSS
+* Vite
+* MVC Architecture
+
+---
+
+## Directory Structure
+
+```text
+app/
+ ├── Http/Controllers
+ │   ├── PublicBlogController.php
+ │   ├── DashboardController.php
+ │   └── ArticleController.php
+ │
+ ├── Models
+ │   ├── User.php
+ │   ├── Article.php
+ │   └── Category.php
+
+database/
+ ├── migrations/
+ └── seeders/
+
+resources/views/
+ ├── layouts/
+ ├── partials/
+ ├── public/
+ ├── articles/
+ └── auth/
+
+routes/
+ └── web.php
+```
+
+---
+
+## Security Measures
+
+* Laravel Authentication
+* Password hashing
+* CSRF protection
+* Validation with `$request->validate()`
+* Auth middleware
+* Ownership protection on articles
+
+---
+
+## Routing System
+
+| Method | Route               | Controller                 |
+| ------ | ------------------- | -------------------------- |
+| GET    | /                   | PublicBlogController@index |
+| GET    | /article/{id}       | PublicBlogController@show  |
+| GET    | /dashboard          | DashboardController@index  |
+| GET    | /articles/create    | ArticleController@create   |
+| POST   | /articles           | ArticleController@store    |
+| GET    | /articles/{id}/edit | ArticleController@edit     |
+| PUT    | /articles/{id}      | ArticleController@update   |
+| DELETE | /articles/{id}      | ArticleController@destroy  |
+
+---
+
+## Database Design
+
+### DB Diagram
+
+![DB Diagram Screenshot](public/Asset/imgs/db_diagram.png)
+
+
+### Tables
+
+* users
+* categories
+* articles
+
+### Relationships
+
+* One user has many articles
+* One category has many articles
+* One article belongs to one user
+* One article belongs to one category
+
+---
+
+## Test Account
+
+| Role    | Email                                       | Password |
+| ------- | ------------------------------------------- | -------- |
+| Blogger | admin@test.com                              | password |
+
+> ⚠️ These accounts are for development/testing purposes only.
+---
+
+## Notes
+
+* Visitors only see published articles
+* Draft articles stay private
+* Unauthenticated users are redirected to login
+
+---
+
+## Screenshots
+
+### Homepage
+
+![Dashboard Screenshot](public/Asset/imgs/Login.png)
+
+### Login page
+
+![Dashboard Screenshot](public/Asset/imgs/Login.png)
+
+
+* Dashboard
+* Create Article
+* Edit Article
+
+(Add screenshots after project completion)
+
+---
+
+## Author
+
+Developed as Laravel training project.
