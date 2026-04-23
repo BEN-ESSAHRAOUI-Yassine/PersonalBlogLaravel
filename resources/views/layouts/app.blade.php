@@ -6,48 +6,21 @@
     <title>Personal Blog</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
-<body class="bg-gray-100">
+<body>
 
-<nav class="bg-white shadow p-4">
-    <div class="max-w-6xl mx-auto flex justify-between">
-        <a href="{{ route('home') }}" class="font-bold">
-            Blog
-        </a>
+@include('partials.header')
 
-        <div class="space-x-3">
-
-            @guest
-                <a href="{{ route('login') }}">Login</a>
-            @endguest
-
-            @auth
-                <a href="{{ route('dashboard') }}">
-                    Dashboard
-                </a>
-
-                <form method="POST"
-                      action="{{ route('logout') }}"
-                      class="inline">
-                    @csrf
-                    <button>
-                        Logout
-                    </button>
-                </form>
-            @endauth
-
-        </div>
-    </div>
-</nav>
-
-<div class="max-w-6xl mx-auto p-6">
+<main class="container py-5">
     @if(session('success'))
-        <div class="bg-green-200 p-3 mb-4 rounded">
+        <div class="alert-success">
             {{ session('success') }}
         </div>
     @endif
 
     @yield('content')
-</div>
+</main>
+
+@include('partials.footer')
 
 </body>
 </html>
