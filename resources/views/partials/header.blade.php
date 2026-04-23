@@ -1,28 +1,33 @@
 <header class="site-header">
-    <div class="container nav-wrapper">
+<div class="container nav-wrapper">
 
-        <a href="{{ route('home') }}" class="logo">
-            PersonalDevBlog
-        </a>
+<a href="{{ route('home') }}" class="logo">
+DevBlog
+</a>
 
-        <nav>
-            @guest
-                <a href="{{ route('login') }}">Login</a>
-            @endguest
+<nav>
 
-            @auth
-                <a href="{{ route('dashboard') }}">Dashboard</a>
+@guest
+<a href="{{ route('login') }}" class="btn">
+Login
+</a>
+@endguest
 
-                <form method="POST"
-                      action="{{ route('logout') }}"
-                      class="inline-form">
-                    @csrf
-                    <button type="submit">
-                        Logout
-                    </button>
-                </form>
-            @endauth
-        </nav>
+@auth
+<a href="{{ route('dashboard') }}">
+Dashboard
+</a>
 
-    </div>
+<form method="POST"
+action="{{ route('logout') }}"
+style="display:inline">
+@csrf
+<button>
+Logout
+</button>
+</form>
+@endauth
+
+</nav>
+</div>
 </header>

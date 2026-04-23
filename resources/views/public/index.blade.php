@@ -2,62 +2,62 @@
 
 @section('content')
 
-<h1 class="text-3xl font-bold mb-6">
-    Latest Articles
-</h1>
+<section class="hero">
+    <h1>Thoughts, Code & Creativity.</h1>
+    <p>
+        Explore articles about Laravel, PHP,
+        freelancing and productivity.
+    </p>
+</section>
 
-<form method="GET" class="flex gap-3 mb-6">
+<form method="GET" class="search-bar">
 
-    <input type="text"
-           name="search"
-           placeholder="Search title..."
-           value="{{ request('search') }}"
-           class="border p-2 rounded">
+<input type="text"
+name="search"
+placeholder="Search article..."
+value="{{ request('search') }}">
 
-    <select name="category"
-            class="border p-2 rounded">
+<select name="category">
+<option value="">All Categories</option>
 
-        <option value="">All Categories</option>
+@foreach($categories as $category)
+<option value="{{ $category->id }}">
+{{ $category->name }}
+</option>
+@endforeach
 
-        @foreach($categories as $category)
-            <option value="{{ $category->id }}"
-                @selected(request('category') == $category->id)>
-                {{ $category->name }}
-            </option>
-        @endforeach
+</select>
 
-    </select>
-
-    <button class="bg-blue-600 text-white px-4 rounded">
-        Filter
-    </button>
+<button class="btn">
+Search
+</button>
 
 </form>
 
-<div class="grid md:grid-cols-2 gap-6">
+<div class="grid">
 
 @foreach($articles as $article)
 
-<div class="bg-white p-5 rounded shadow">
+<div class="card">
 
-    <h2 class="text-xl font-bold mb-2">
-        {{ $article->title }}
-    </h2>
+<p class="meta">
+{{ $article->category->name }}
+• {{ $article->created_at->format('d M Y') }}
+• {{ $article->reading_time }} min read
+</p>
 
-    <p class="text-sm text-gray-500 mb-2">
-        {{ $article->category->name }}
-        • {{ $article->created_at->format('d M Y') }}
-        • {{ $article->reading_time }} min read
-    </p>
+<h2>{{ $article->title }}</h2>
 
-    <p class="mb-4">
-        {{ Str::limit($article->content, 140) }}
-    </p>
+<p>
+{{ Str::limit($article->content, 140) }}
+</p>
 
-    <a href="{{ route('article.show', $article) }}"
-       class="text-blue-600 font-bold">
-        Read More →
-    </a>
+<br>
+
+<a href="{{ route('article.show',$article) }}"
+class="btn">
+Read Article
+</a>
 
 </div>
 
@@ -65,8 +65,8 @@
 
 </div>
 
-<div class="mt-8">
-    {{ $articles->links() }}
+<div style="margin-top:40px">
+{{ $articles->links() }}
 </div>
 
 @endsection
