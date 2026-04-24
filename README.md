@@ -212,7 +212,7 @@ routes/
 
 ### DB Diagram
 
-![DB Diagram Screenshot](resources/Asset/db_diagram.png)
+![DB Diagram Screenshot](resources/asset/db_diagram.png)
 
 
 ### Tables
@@ -251,23 +251,23 @@ routes/
 
 ### Homepage
 
-![Dashboard Screenshot](resources/Asset/Homepage.png)
+![Dashboard Screenshot](resources/asset/Homepage.png)
 
 ### Login page
 
-![Dashboard Screenshot](resources/Asset/Login.png)
+![Dashboard Screenshot](resources/asset/Login.png)
 
 ### Dashboard (Blogger Panel)
 
-![Dashboard Screenshot](resources/Asset/Dashboard.png)
+![Dashboard Screenshot](resources/asset/Dashboard.png)
 
 ### article page
 
-![Dashboard Screenshot](resources/Asset/ArticlePage.png)
+![Dashboard Screenshot](resources/asset/ArticlePage.png)
 
 ### Jira Board
 
-![Dashboard Screenshot](resources/Asset/JiraBoard.png)
+![Dashboard Screenshot](resources/asset/JiraBoard.png)
 
 
 
