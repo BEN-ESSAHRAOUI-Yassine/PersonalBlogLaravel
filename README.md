@@ -1,8 +1,8 @@
-# Personal Blog CMS
+# Personal Blog
 
 ## Overview
 
-Personal Blog CMS is a web-based blogging platform developed using **Laravel 13**.
+Personal Blog  is a web-based blogging platform developed using **Laravel 13**.
 
 The application allows a freelance blogger to manage technical articles, publish content online, and create a professional digital presence.
 
@@ -212,7 +212,7 @@ routes/
 
 ### DB Diagram
 
-![DB Diagram Screenshot](public/Asset/imgs/db_diagram.png)
+![DB Diagram Screenshot](resources/Asset/db_diagram.png)
 
 
 ### Tables
@@ -251,21 +251,23 @@ routes/
 
 ### Homepage
 
-![Dashboard Screenshot](public/Asset/imgs/Login.png)
+![Dashboard Screenshot](resources/Asset/Homepage.png)
 
 ### Login page
 
-![Dashboard Screenshot](public/Asset/imgs/Login.png)
+![Dashboard Screenshot](resources/Asset/Login.png)
+
+### Dashboard (Blogger Panel)
+
+![Dashboard Screenshot](resources/Asset/Dashboard.png)
+
+### article page
+
+![Dashboard Screenshot](resources/Asset/ArticlePage.png)
+
+### Jira Board
+
+![Dashboard Screenshot](resources/Asset/JiraBoard.png)
 
 
-* Dashboard
-* Create Article
-* Edit Article
 
-(Add screenshots after project completion)
-
----
-
-## Author
-
-Developed as Laravel training project.
